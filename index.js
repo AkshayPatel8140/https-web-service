@@ -3,6 +3,7 @@ const https = require('https')
 const fs = require('fs');
 const startup = require('./routes/startup');
 const classSchedule = require('./routes/classSchedule');
+const location = require('./routes/location');
 
 const app = express();
 // const cert = fs.readFileSync('./ssl/cert.pem')
@@ -17,6 +18,7 @@ app.use(express.json())
 
 app.use('/https-web-service/v1', startup)
 app.use('/https-web-service/v1', classSchedule)
+app.use('/https-web-service/v1', location)
 //domain-name/seb-service/v1/<route/path/endpoint> ==> endpoint
 //safeway.com/order-purchases/v1/purchaseHistory => endpoint
 //safeway.com/order-purchases/v2/purchaseHistory => endpoint
