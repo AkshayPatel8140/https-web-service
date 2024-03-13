@@ -1,9 +1,8 @@
-const express = require('express')
-const data = require('../database/class-schedule.json')
-const classSchedule = express.Router()
-const fs = require('fs')
+import express from 'express'
+import fs from 'fs'
+import data from '../database/class-schedule.json' assert {type: 'json'}
 
-console.log(data, 'this is our data')
+const classSchedule = express.Router()
 
 // Our routes/endpoints/curd Operation
 
@@ -57,7 +56,6 @@ classSchedule.put('/update/:course', (req, res) => {
         data[index].Instructor = newInstructor;
         const filePath = path.join(__dirname, 'updated-class-schedule.json', 'class-schedule')
         fs.writeFileSync(filePath, JSON.stringify)
-
         res.json({ message: 'Instructor Updated!!' })
     }
 })
@@ -66,4 +64,4 @@ classSchedule.put('/update/:course', (req, res) => {
 
 
 
-module.exports = classSchedule
+export default classSchedule
